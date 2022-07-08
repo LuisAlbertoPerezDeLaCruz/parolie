@@ -1,0 +1,50 @@
+ion-input {
+  background: #dde9ff;
+  border-radius: 10px;
+  margin-top: 6px;
+  --padding-start: 6px !important;
+}
+
+ion-textarea {
+  background: #dde9ff;
+  border-radius: 10px;
+  margin-top: 6px;
+  --padding-start: 6px !important;
+}
+
+ion-select {
+  background: #dde9ff;
+  border-radius: 10px;
+  margin-top: 6px;
+  --padding-start: 6px !important;
+}
+
+mat-select {
+  background: #dde9ff;
+  border-radius: 10px;
+  margin-top: 6px;
+  --padding-start: 6px !important;
+}
+
+::ng-deep .mat-select-value {
+  height: 2.5em;
+  vertical-align: middle;
+}
+
+ion-item {
+  padding: 0 0.5em 1em 0.5em;
+}
+
+.center {
+  margin: auto;
+  width: 70%;
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}

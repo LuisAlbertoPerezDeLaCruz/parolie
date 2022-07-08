@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Card selection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <br />
+    <div style="text-align: center; font-size: 20px; color: grey">
+      Please select a payment method from the list or
+      <br />
+      <span class="clickable" (click)="newCard()">click for different one</span>
+      <div>
+        <br />
+        <ion-list>
+          <ion-item
+            *ngFor="let pm of pms"
+            class="clickable"
+            (click)="payReservation(pm)"
+          >
+            <ion-grid fixed>
+              <ion-row style="font-size: 18px; color: grey">
+                <ion-col size="2"
+                  ><ion-img [src]="pm.card.icon"></ion-img
+                ></ion-col>
+                <ion-col size="5"> {{pm.card.brand}}</ion-col>
+                <ion-col size="5"> .....{{pm.card.last4}}</ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</ion-content>

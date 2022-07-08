@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary" style="padding-right: 10px">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="translator-library"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'TRANSLATORS.schedulle.title' | translate }}</ion-title>
+    <div slot="end" class="ion-no-padding;">
+      <mbsc-segmented-group
+        [(ngModel)]="view"
+        (change)="changeView()"
+        style="margin: 0; padding: 0"
+      >
+        <mbsc-segmented value="month"
+          >{{ 'TRANSLATORS.schedulle.month' | translate }}</mbsc-segmented
+        >
+        <mbsc-segmented value="week"
+          >{{ 'TRANSLATORS.schedulle.week' | translate }}</mbsc-segmented
+        >
+        <mbsc-segmented value="day"
+          >{{ 'TRANSLATORS.schedulle.day' | translate }}</mbsc-segmented
+        >
+        <mbsc-segmented value="agenda"
+          >{{ 'TRANSLATORS.schedulle.agenda' | translate }}</mbsc-segmented
+        >
+      </mbsc-segmented-group>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="ready">
+  <mbsc-eventcalendar
+    [data]="myEvents"
+    [options]="calendarOptions"
+    [(selectedDate)]="calendarSelectedDate"
+    [view]="calView"
+    [headerTemplate]="customWithNavButtons"
+  >
+    <ng-template #customWithNavButtons>
+      <div class="mbsc-grid" style="padding-bottom: 1em">
+        <div class="mbsc-row">
+          <div class="mbsc-col" style="padding-top: 0.75em">
+            {{selectedTranslator.name}}
+          </div>
+          <div class="mbsc-col" style="text-align: right">
+            <mbsc-calendar-prev></mbsc-calendar-prev>
+            <mbsc-calendar-today></mbsc-calendar-today>
+            <mbsc-calendar-next></mbsc-calendar-next>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </mbsc-eventcalendar>
+  <mbsc-popup
+    [options]="popupOptions"
+    [anchor]="popupAnchor"
+    [buttons]="popupButtons"
+    [headerText]="popupHeaderText"
+    #popup
+  >
+    <div class="mbsc-form-group">
+      <mbsc-input
+        label="{{ 'TRANSLATORS.schedulle.createEdit.title' | translate }}"
+        [(ngModel)]="popupEventTitle"
+        disabled
+      ></mbsc-input>
+      <mbsc-select
+        [data]="locations"
+        [(ngModel)]="popupEventLocation"
+        [options]="selectOptions"
+        (change)="locationChange()"
+      ></mbsc-select>
+    </div>
+    <div class="mbsc-form-group">
+      <mbsc-switch
+        label="{{ 'TRANSLATORS.schedulle.createEdit.allDay' | translate }}"
+        [(ngModel)]="popupEventAllDay"
+      ></mbsc-switch>
+      <mbsc-datepicker
+        [(ngModel)]="popupEventDates"
+        [options]="datePickerOptions"
+        [controls]="popupEventAllDay ? datePickerControls : datetimePickerControls"
+        [responsive]="popupEventAllDay ? datePickerResponsive : datetimePickerResponsive"
+        [startInput]="startInput"
+        [locale]="currLocale"
+        [endInput]="endInput"
+      ></mbsc-datepicker>
+      <mbsc-input
+        #startInput
+        label="{{ 'TRANSLATORS.schedulle.createEdit.starts' | translate }}"
+      ></mbsc-input>
+      <mbsc-input
+        #endInput
+        label="{{ 'TRANSLATORS.schedulle.createEdit.ends' | translate }}"
+      ></mbsc-input>
+      <div *ngIf="isEdit" class="mbsc-button-group">
+        <mbsc-button
+          class="mbsc-button-block"
+          color="danger"
+          variant="outline"
+          (click)="onDeleteClick()"
+        >
+          {{ 'TRANSLATORS.schedulle.createEdit.deleteEvent' | translate }}
+        </mbsc-button>
+      </div>
+    </div>
+  </mbsc-popup>
+</ion-content>

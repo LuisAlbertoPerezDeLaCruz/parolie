@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="schedulle">
+        <i slot="start" class="far fa-calendar fa-1x"></i>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Translator Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="ready">
+  <h3 class="ion-text-center">{{profile.name}}</h3>
+
+  <img
+    *ngIf="profile.picture"
+    class="center photo"
+    src="{{profile.picture}}"
+    alt=""
+    referrerpolicy="no-referrer"
+  />
+
+  <img
+    *ngIf="!profile.picture"
+    class="center avatar"
+    src="../../../../assets/imgs/blank-profile-picture.png"
+    alt=""
+    referrerpolicy="no-referrer"
+  />
+
+  <p class="ion-text-center">{{profile.description}}</p>
+  <ion-card>
+    <ion-card-header class="ion-no-padding">Basic information</ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked"> First name</ion-label>
+          {{profile.first_name}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Last name</ion-label>
+          {{profile.last_name}}
+        </ion-item>
+        <ion-item *ngIf="profile.middle_name">
+          <ion-label position="stacked"> Last name</ion-label>
+          {{profile.middle_name}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Date of birth</ion-label>
+          {{profile.date_of_birth}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Gender</ion-label>
+          {{getGender(profile.gender)}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header class="ion-no-padding"
+      >Location information</ion-card-header
+    >
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked"> Email</ion-label>
+          {{profile.email}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Nationality</ion-label>
+          {{profile.nationality}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Country of residence</ion-label>
+          {{profile.country_of_residence}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> City</ion-label>
+          {{profile.city}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Zip code</ion-label>
+          {{profile.zip_code}}
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"> Phone number</ion-label>
+          {{profile.phone_number}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header class="ion-no-padding"
+      >Professional information</ion-card-header
+    >
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-label position="stacked"> Occupation</ion-label>
+          {{profile.occupation}}
+        </ion-item>
+      </ion-list>
+      <ion-item>
+        <ion-label position="stacked"> Languages</ion-label>
+        <div>
+          <span *ngFor="let l of profile.languages"
+            >{{getLangDesc(l)}} &nbsp;</span
+          >
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked"> Services</ion-label>
+        <div>
+          <span *ngFor="let s of profile.types_of_services"
+            >{{getServiceDesc(s)}} &nbsp;</span
+          >
+        </div>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button
+    *ngIf="!user?.statuses.aproved"
+    expand="block"
+    type="button"
+    color="secondary"
+    fill="outline"
+    class="ion-padding-horizontal ion-margin-vertical"
+    (click)="doApprove()"
+    [hidden]="submitting"
+  >
+    Approve {{profile.first_name}}
+  </ion-button>
+  <ion-button
+    *ngIf="user?.statuses.aproved"
+    expand="block"
+    type="button"
+    color="danger"
+    fill="outline"
+    class="ion-padding-horizontal ion-margin-vertical"
+    (click)="doReverseApproval()"
+    [hidden]="submitting"
+  >
+    Reverse approval of {{profile.first_name}}
+  </ion-button>
+</ion-content>

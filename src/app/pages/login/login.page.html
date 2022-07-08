@@ -1,0 +1,168 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Parolie</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openLanguagePopover($event)">
+        <i class="fas fa-language fa-3x"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="flip-container" #flipcontainer>
+    <div class="flipper">
+      <div class="front">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{ 'LOGIN.title' | translate }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+              <ion-item lines="none">
+                <ion-label position="stacked"
+                  >{{ 'LOGIN.email' | translate }}</ion-label
+                >
+                <ion-input
+                  type="email"
+                  placeholder="john@doe.com"
+                  formControlName="email"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label position="stacked"
+                  >{{ 'LOGIN.password' | translate }}</ion-label
+                >
+                <app-show-hide-password>
+                  <ion-input
+                    type="password"
+                    formControlName="password"
+                  ></ion-input>
+                </app-show-hide-password>
+              </ion-item>
+
+              <ion-button
+                expand="block"
+                type="submit"
+                color="primary"
+                [disabled]="!loginForm.valid"
+                class="ion-padding-horizontal ion-margin-vertical"
+              >
+                {{ 'LOGIN.signWithEmail' | translate }}
+              </ion-button>
+
+              <ion-button
+                expand="block"
+                color="primary"
+                class="ion-padding-horizontal ion-margin-vertical"
+                (click)="googleSignin()"
+              >
+                <ion-icon name="logo-google"></ion-icon>
+                <span class="ion-padding"
+                  >{{ 'LOGIN.signWithGoogle' | translate }}</span
+                >
+              </ion-button>
+
+              <ion-button
+                expand="block"
+                type="button"
+                color="secondary"
+                fill="outline"
+                class="ion-padding-horizontal ion-margin-vertical"
+                (click)="toggleRegister()"
+              >
+                {{ 'LOGIN.createAccount' | translate }}
+              </ion-button>
+
+              <a
+                class="trouble ion-padding-horizontal ion-margin-vertical"
+                (click)="openReset()"
+                >{{ 'LOGIN.troubleLogin' | translate }}</a
+              >
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div class="back">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title
+              >{{ 'LOGIN.newAccount' | translate }}</ion-card-title
+            >
+          </ion-card-header>
+          <ion-card-content>
+            <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate>
+              <ion-item lines="none">
+                <ion-label position="stacked"
+                  >{{ 'LOGIN.email' | translate }}</ion-label
+                >
+                <ion-input
+                  type="email"
+                  placeholder="john@doe.com"
+                  formControlName="email"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label position="stacked"
+                  >{{ 'LOGIN.name' | translate }}</ion-label
+                >
+                <ion-input
+                  placeholder="John"
+                  formControlName="name"
+                ></ion-input>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label position="stacked"
+                  >{{ 'LOGIN.password' | translate }}</ion-label
+                >
+                <app-show-hide-password>
+                  <ion-input
+                    type="password"
+                    formControlName="password"
+                  ></ion-input>
+                </app-show-hide-password>
+              </ion-item>
+
+              <ion-item lines="none" hidden>
+                <ion-label>{{ 'LOGIN.selectRole' | translate }}</ion-label>
+                <ion-select formControlName="role">
+                  <ion-select-option value="CLIENT"
+                    >{{ 'LOGIN.client' | translate }}</ion-select-option
+                  >
+                  <ion-select-option value="TRANSLATOR"
+                    >{{ 'LOGIN.translator' | translate }}</ion-select-option
+                  >
+                </ion-select>
+              </ion-item>
+
+              <ion-button
+                expand="block"
+                type="submit"
+                class="ion-padding-horizontal ion-margin-vertical"
+                [disabled]="!registerForm.valid"
+              >
+                {{ 'LOGIN.register' | translate }}
+              </ion-button>
+
+              <ion-button
+                expand="block"
+                type="button"
+                color="secondary"
+                fill="clear"
+                class="ion-padding-horizontal ion-margin-vertical"
+                (click)="toggleRegister()"
+              >
+                <ion-icon name="arrow-back" slot="start"></ion-icon>
+                {{ 'LOGIN.backToLogin' | translate }}
+              </ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>

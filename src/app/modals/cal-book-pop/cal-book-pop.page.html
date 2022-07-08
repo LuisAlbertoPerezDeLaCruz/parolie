@@ -1,0 +1,63 @@
+<ion-content>
+  <mbsc-page>
+    <div class="mbsc-grid">
+      <div class="mbsc-row">
+        <div class="mbsc-col-6">
+          <mbsc-button color="danger" (click)="close()">Cancel</mbsc-button>
+        </div>
+        <div class="mbsc-col-6" style="text-align: right">
+          <mbsc-button color="primary" (click)="save()" [disabled]="!canSave"
+            >Save</mbsc-button
+          >
+        </div>
+      </div>
+    </div>
+    <div class="mbsc-form-group" style="margin-top: 1em">
+      <mbsc-input
+        label="Title"
+        [(ngModel)]="popupEventTitle"
+        disabled
+      ></mbsc-input>
+    </div>
+    <div class="mbsc-form-group">
+      <mbsc-datepicker
+        [(ngModel)]="popupEventDates"
+        [options]="datePickerOptions"
+        [controls]="datetimePickerControls"
+        [responsive]="datetimePickerResponsive"
+        [startInput]="startInput"
+        [endInput]="endInput"
+      ></mbsc-datepicker>
+      <mbsc-input #startInput label="Starts"></mbsc-input>
+      <mbsc-input #endInput label="Ends"></mbsc-input>
+
+      <ion-item>
+        <ion-label>Select service:</ion-label>
+        <ion-select [(ngModel)]="serviceSelected" class="select-full-width">
+          <ion-select-option
+            *ngFor="let service of services"
+            [value]="service._id"
+            >{{service.description}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Enter your requirements:</ion-label>
+        <ion-textarea
+          [(ngModel)]="popupEventRequirement"
+          (ionChange)="onChangeRequirements($event)"
+        ></ion-textarea>
+      </ion-item>
+      <div *ngIf="isEdit" class="mbsc-button-group">
+        <mbsc-button
+          class="mbsc-button-block"
+          color="danger"
+          variant="outline"
+          (click)="delete()"
+          >Delete reservation
+        </mbsc-button>
+      </div>
+    </div>
+  </mbsc-page>
+</ion-content>

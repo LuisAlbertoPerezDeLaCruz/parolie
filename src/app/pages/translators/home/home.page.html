@@ -1,0 +1,291 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+      <ion-button (click)="openLanguagePopover($event)">
+        <i class="fas fa-language fa-2x"></i>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'TRANSLATORS.home.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="ready && translator_statuses.created_availability">
+  <div class="ion-text-center">
+    <h3>{{translator?.name}}</h3>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="ready && !translator_statuses.created_availability">
+  <div class="ion-text-center">
+    <h3>{{translator?.name}}</h3>
+  </div>
+
+  <mat-horizontal-stepper [linear]="true">
+    <mat-step
+      label="Profile"
+      state="profile"
+      [completed]="translator_statuses.aproved"
+    >
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="!translator_statuses.created_profile"
+      >
+        <p style="margin: 0">
+          We need to know about you as a translator. Please provide the required
+          information. Our staff will approved it shortly; you may be contacted
+          in case any questions arrise. Go ahead and complete this step, we will
+          be glad to have you soon in our translators team.
+        </p>
+      </ion-text>
+
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="translator_statuses.created_profile  && !translator_statuses.aproved"
+      >
+        <p style="margin: 0">
+          Now that you have completed your profile, our staff can review your
+          information and approve it. Once approved, in the next step you will
+          be able to include your time availabilies so that clients can contract
+          your services. <br />
+          In the mean time if you want to review/edit your profile you can go to
+          your Catalogue.
+        </p>
+      </ion-text>
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="translator_statuses.aproved"
+      >
+        <p style="margin: 0">
+          Congratulations your profile is approved !!! You can now go ahead and
+          fill your locations so that clients can book on your agenda knowing
+          where you would be available.
+        </p>
+      </ion-text>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-padding-horizontal ion-margin-vertical"
+        routerLink="profile"
+      >
+        <i class="far fa-address-card fa-2x"></i>
+        <span *ngIf="!translator_statuses.created_profile" class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.1' | translate }}</span
+        >
+        <span *ngIf="translator_statuses.created_profile" class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.1.edit' | translate }}</span
+        >
+      </ion-button>
+
+      <div class="next-back">
+        <button
+          color="primary"
+          mat-button
+          matStepperNext
+          [hidden]="!translator_statuses.aproved"
+          style="padding: 0"
+        >
+          Next >
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step
+      label="Locations"
+      state="locations"
+      [completed]="translator_statuses.created_locations"
+    >
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="!translator_statuses.created_locations"
+      >
+        <p style="margin: 0">
+          Please include your locations so that clients can book on your agenda
+          knowing where you would be available.<br />
+          To review/edit your locations you can go to your Catalogue.
+        </p>
+      </ion-text>
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="translator_statuses.created_locations"
+      >
+        <p style="margin: 0">
+          Great, you can go ahead to the complete your availability agenda.
+        </p>
+      </ion-text>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-padding-horizontal ion-margin-vertical"
+        routerLink="locations"
+      >
+        <i class="fas fa-map-marker-alt fa-2x"></i>
+        <span
+          *ngIf="translator_statuses.aproved && !translator_statuses.created_locations"
+          class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.3' | translate }}</span
+        >
+        <span
+          *ngIf="translator_statuses.aproved && translator_statuses.created_locations"
+          class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.3.edit' | translate }}</span
+        >
+      </ion-button>
+
+      <div class="next-back">
+        <button
+          color="primary"
+          mat-button
+          matStepperPrevious
+          style="padding: 0"
+        >
+          < Back
+        </button>
+        <button
+          [hidden]="!translator_statuses.created_locations"
+          color="primary"
+          mat-button
+          matStepperNext
+          style="padding: 0"
+        >
+          Next >
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step
+      label="Availability"
+      state="availability"
+      [completed]="translator_statuses.created_availability"
+    >
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="!translator_statuses.created_availability"
+      >
+        <p style="margin: 0">
+          Please go ahead and fill your time/location availability so that
+          clients can book on your agenda.
+        </p>
+      </ion-text>
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="translator_statuses.created_availability"
+      >
+        <p style="margin: 0">
+          Great, you are all set for find clients in Parolie's network and start
+          your translators business. The next step will show you how to find
+          your first job. Congratulations !!!
+        </p>
+      </ion-text>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-padding-horizontal ion-margin-vertical"
+        routerLink="schedulle"
+      >
+        <i class="far fa-calendar fa-2x"></i>
+        <span
+          *ngIf="translator_statuses.aproved && !translator_statuses.created_availability"
+          class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.4' | translate }}</span
+        >
+        <span
+          *ngIf="translator_statuses.aproved && translator_statuses.created_availability"
+          class="ion-padding"
+          >{{ 'TRANSLATORS.home.steps.4.edit' | translate }}</span
+        >
+      </ion-button>
+
+      <div class="next-back">
+        <button
+          color="primary"
+          mat-button
+          matStepperPrevious
+          style="padding: 0"
+        >
+          < Back
+        </button>
+        <!-- <button
+          [hidden]="!translator_statuses.created_availability"
+          color="primary"
+          mat-button
+          matStepperNext
+          style="padding: 0"
+        >
+          Next >
+        </button> -->
+      </div>
+    </mat-step>
+
+    <!-- <mat-step label="Search" state="search_clients">
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="translator_statuses.created_availability"
+      >
+        <p style="margin: 0">
+          Lets start finding the clients that need assistance at this moment.
+          You can click on the search botton now and also you may always find
+          the link to this action on My Reservation located in your Catalogue.
+          <br />
+        </p>
+      </ion-text>
+      <ion-text
+        color="medium"
+        class="ion-padding ion-text-justify"
+        *ngIf="!translator_statuses.created_availability"
+      >
+        <p style="margin: 0">
+          Once you have created your time/location availability on the previous
+          step you will be able to search for clients.<br />
+          You can also review/edit your availability on your Catalogue once your
+          profile has been approved.
+        </p>
+      </ion-text>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        class="ion-padding-horizontal ion-margin-vertical"
+        *ngIf="translator_statuses.created_availability"
+      >
+        <i class="fas fa-users fa-2x"></i>
+        <span class="ion-padding">Search for Clients</span>
+      </ion-button>
+
+      <div class="next-back">
+        <button
+          color="primary"
+          mat-button
+          matStepperPrevious
+          style="padding: 0"
+        >
+          < Back
+        </button>
+      </div>
+    </mat-step> -->
+
+    <!-- Icon overrides. -->
+    <ng-template matStepperIcon="profile">
+      <i class="far fa-address-card"></i>
+    </ng-template>
+    <ng-template matStepperIcon="availability">
+      <i class="far fa-calendar"></i>
+    </ng-template>
+    <ng-template matStepperIcon="search_clients">
+      <i class="fas fa-users"></i>
+    </ng-template>
+  </mat-horizontal-stepper>
+</ion-content>

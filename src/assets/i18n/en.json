@@ -1,0 +1,264 @@
+{
+  "BUTTONS": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "done": "Done",
+    "reset": "Reset",
+    "clear": "Clear all",
+    "save": "Save"
+  },
+  "ALERTS": {
+    "HEADERS": {
+      "error": "Error",
+      "resetPassword": "Reset Password",
+      "missingVerification": "Missing verification",
+      "accountCreated": "Account created"
+    },
+    "MESSAGES": {
+      "verifyEmail": "Please verifiy email to complete registration.",
+      "almostReady": "Almost ready. Please verify email sent to you."
+    }
+  },
+  "CONTROLS": {
+    "loading": "Loading ...",
+    "TOAST": {
+      "successCheckEmail": "Success! Check your Emails for more information."
+    }
+  },
+  "LOGIN": {
+    "title": "Login",
+    "email": "Email",
+    "name": "Name",
+    "password": "Password",
+    "signWithEmail": "Sign in with email",
+    "signWithGoogle": "Sign in with Google",
+    "createAccount": "Create Account",
+    "troubleLogin": "Trouble login",
+    "newAccount": "New Account",
+    "selectRole": "Select Role",
+    "client": "Client",
+    "translator": "Translator",
+    "register": "Register",
+    "backToLogin": "Back to login",
+    "chooseRole": "Choose your role"
+  },
+  "TABS": {
+    "home": "Home",
+    "search": "Search",
+    "library": "Catalogue",
+    "inbox": "Inbox"
+  },
+  "CLIENTS": {
+    "home": {
+      "title": "Clients Home"
+    },
+    "library": {
+      "title": "Catalogue",
+      "switch-mode": "Me as translator",
+      "become-translator": "Become a translator",
+      "agenda": "My Agenda"
+    },
+    "search": {
+      "title": "Search",
+      "location": "Location",
+      "assignSearchOptions": "Assign search options",
+      "iSpeak": "I speak",
+      "translatorMustSpeak": "Translator must speak",
+      "services": "Services",
+      "set": "Set",
+      "cancel": "Cancel",
+      "start": "Start",
+      "end": "End",
+      "cantFindResultsFor": "Can't find any results for",
+      "tap": "Tap",
+      "here": "here",
+      "toViewChangeCriteria": "to view/change search criteria",
+      "from": "from",
+      "until": "until"
+    },
+    "agenda": {
+      "title": "Agenda"
+    }
+  },
+  "TRANSLATORS": {
+    "home": {
+      "title": "Translators Home",
+      "welcome": "Welcome to parolie.com, we will help you out to complete the information needed in order to start your translation business as soon as possible. Please complete the unchecked items.",
+      "steps": {
+        "1": "Complete your profile",
+        "1.edit": "Edit your profile",
+        "2": "Profile reviewed/approved",
+        "3": "Create your locations",
+        "3.edit": "Edit your locations",
+        "4": "Create your availability",
+        "4.edit": "Edit your availability"
+      }
+    },
+    "library": {
+      "title": "Catalogue",
+      "profile": "My Profile",
+      "schedulle": "My Schedulle",
+      "agenda": "My Agenda",
+      "locations": "My Locations",
+      "reservations": "My Reservations",
+      "reviews": "My Reviews",
+      "switch-mode": "Me as client"
+    },
+    "availability": {
+      "title": "Availability",
+      "week": "Week",
+      "day": "Day",
+      "month": "Month",
+      "cal-modal": {
+        "starttime": "Start Time",
+        "endtime": "End Time",
+        "recurring": "Recurring availability",
+        "repetitions": "Number of repetitions",
+        "weekdays": {
+          "monday": "Monday",
+          "tuesday": "Tuesday",
+          "wednesday": "Wednesday",
+          "thursday": "Thursday",
+          "friday": "Friday",
+          "saturday": "Saturday",
+          "sunday": "Sunday"
+        },
+        "event-title": "availability"
+      },
+      "no-availability-set": "No availability set",
+      "edit-cal-entry": {
+        "starttime": "Start Time",
+        "endtime": "End Time",
+        "change-or-delete": "Change or delete",
+        "no-data-to-show": "No data to show",
+        "delete-this-or-all": "Delete this date or all ?",
+        "delete-remaining": "Delete All remaining",
+        "delete-only-this": "Delete only this date",
+        "apply-this-or-all": "Apply to this date or all ?",
+        "apply-remaining": "Apply to all remaining",
+        "apply-only-this": "Apply only to this date"
+      }
+    },
+    "locations": {
+      "title": "Locations",
+      "primary": "Primary",
+      "edit": "Edit",
+      "delete": "Delete",
+      "nameit": "Name your location",
+      "locality": "Locality (select from Maps)",
+      "address": "Complete Address (optional)",
+      "address-primary": "Primary address",
+      "cancel": "Cancel",
+      "save": "Save"
+    },
+    "reservations": {
+      "title": "Reservations",
+      "tabs": {
+        "blocked": "Blocked",
+        "approved": "Approved",
+        "expired": "Expired",
+        "disapproved": "Disapproved",
+        "cancelled": "Cancelled",
+        "delivered": "Delivered"
+      },
+      "emptystate": "There are no entries to list",
+      "detail": {
+        "approve": "Approve",
+        "disapprove": "Disapprove",
+        "deliver": "Mark Delivered",
+        "chat": "Chat"
+      }
+    },
+    "schedulle": {
+      "title": "Schedulle",
+      "month": "Month",
+      "week": "Week",
+      "day": "Day",
+      "agenda": "Agenda",
+      "createEdit": {
+        "newAvailability": "New availability",
+        "editAvailability": "Edit availability",
+        "add": "Add",
+        "save": "Save",
+        "cancel": "Cancel",
+        "title": "Title",
+        "location": "Location",
+        "allDay": "All-day",
+        "starts": "Starts",
+        "ends": "Ends",
+        "deleteEvent": "Delete"
+      }
+    },
+    "profile": {
+      "title": "Profile"
+    },
+    "agenda": {
+      "title": "Agenda",
+      "reservation": {
+        "title": "Reservation",
+        "client": "CLient",
+        "locality": "Locality"
+      }
+    },
+    "search": {
+      "title": "Search"
+    },
+    "inbox": {
+      "title": "Inbox",
+      "messages": "Messages",
+      "notifications": "Notifications",
+      "notificationType": "Notifications",
+      "unread": "Unread",
+      "read": "Read",
+      "all": "All"
+    },
+    "profileCard": {
+      "about": "About",
+      "email": "email",
+      "phone": "phone",
+      "seeAvailability": "See availability"
+    },
+    "ratingComponent": {
+      "more": "more"
+    },
+    "ratingDetails": {
+      "rate": "Rate",
+      "ratedBy": "by",
+      "reviews": "Reviews",
+      "clientsFeedBack": "Clients feedback",
+      "averageRate": "Average rate",
+      "comment": "Comment"
+    }
+  },
+  "ADMINISTRATOR": {
+    "home": {
+      "title": "Administrator Home",
+      "translatorsPendingApproval": "Translators pending approval",
+      "translatorsApproved": "Translators approved"
+    }
+  },
+  "CHAT": {
+    "title": "Chat with",
+    "me": "Me"
+  },
+  "LANGUAGES": {
+    "EN": "English",
+    "SP": "Spanish",
+    "FR": "French",
+    "IT": "Italian",
+    "DE": "German",
+    "ZH": "Chinese"
+  },
+  "SERVICES": {
+    "TR": "Translations assistance",
+    "DC": "Document Translations"
+  },
+  "RATE": {
+    "on": "On",
+    "youReceived": "you received translators assistance. We would like to know how you rate the translator's work",
+    "comments": "Comments",
+    "send": "Send",
+    "howDidItGo": "How did it go",
+    "thankYou": "Thank you"
+  }
+}

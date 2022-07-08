@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="signOut()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+      <ion-button (click)="openLanguagePopover($event)">
+        <i class="fas fa-language fa-2x"></i>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'CLIENTS.home.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="ion-text-center">
+    <h3>{{client?.name}}</h3>
+  </div>
+</ion-content>

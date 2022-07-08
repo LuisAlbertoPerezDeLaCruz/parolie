@@ -1,0 +1,7 @@
+{
+  "name": "paroliev6",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

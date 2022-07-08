@@ -1,0 +1,76 @@
+<ion-card style="text-align: center; margin: 1em; padding: 0" *ngIf="ready">
+  <img class="avatar" [src]="creator?.avatar" referrerPolicy="no-referrer" />
+  <ion-card-header style="padding: 0, 0, 16px, 0">
+    <ion-card-title style="font-size: 16px"
+      >{{ creator?.name }}
+      <span
+        style="
+          font-size: 12px;
+          color: var(--ion-color-primary);
+          text-decoration: underline;
+          cursor: pointer;
+        "
+        (click)="startChat(creator._id, creator.name)"
+        *ngIf="canEdit"
+      >
+        {{ "TRANSLATORS.reservations.detail.chat" | translate }}
+        <i class="far fa-comment"></i></span
+    ></ion-card-title>
+    <ion-card-subtitle style="text-align: left; font-size: 12px">
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50
+            ><i class="far fa-envelope"></i> {{ creator?.email }}
+          </ion-col>
+          <ion-col width-50
+            ><i class="fas fa-phone"></i> (414) 9337812
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col width-50
+            ><i class="fas fa-calendar-day"></i>
+            {{
+              reservation?.startDate | dfnsFormat: "iii d LLL - h:mm aaa"
+            }}</ion-col
+          >
+          <ion-col width-50>
+            <i class="fas fa-map-marker-alt"></i>
+            {{ reservation?.location.name }}</ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </ion-card-subtitle>
+    <ion-card-subtitle>
+      <ion-button
+        *ngIf="reservation.status == 'BLOCKED' && canEdit"
+        (click)="change_status(reservation, 'APPROVED')"
+        size="small"
+        color="primary"
+        >{{ "TRANSLATORS.reservations.detail.approve" | translate }}</ion-button
+      >
+      <ion-button
+        *ngIf="reservation.status == 'APPROVED' && canEdit && !timeOver"
+        (click)="change_status(reservation, 'DISAPPROVED')"
+        size="small"
+        color="primary"
+        >{{
+          "TRANSLATORS.reservations.detail.disapprove" | translate
+        }}</ion-button
+      >
+      <ion-button
+        *ngIf="reservation.status == 'APPROVED' && canEdit && timeOver"
+        (click)="change_status(reservation, 'DELIVERED')"
+        size="small"
+        color="primary"
+        >{{ "TRANSLATORS.reservations.detail.deliver" | translate }}</ion-button
+      >
+      <ion-button
+        *ngIf="reservation.status == 'DISAPPROVED' && canEdit"
+        (click)="change_status(reservation, 'APPROVED')"
+        size="small"
+        color="primary"
+        >{{ "TRANSLATORS.reservations.detail.approve" | translate }}</ion-button
+      >
+    </ion-card-subtitle>
+  </ion-card-header>
+</ion-card>

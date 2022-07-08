@@ -1,0 +1,40 @@
+<ion-card style="text-align: center">
+  <br />
+  <img class="avatar" [src]="profile.picture" referrerPolicy="no-referrer" />
+  <ion-card-header>
+    <ion-card-title
+      >{{ profile.first_name }} {{ profile.last_name }}</ion-card-title
+    >
+    <ion-card-subtitle>
+      {{ "TRANSLATORS.profileCard.about" | translate }}
+      {{ profile.first_name }} : {{ profile.description }}
+    </ion-card-subtitle>
+
+    <div *ngIf="canShowMore">
+      <ion-card-subtitle>
+        {{ "TRANSLATORS.profileCard.email" | translate }}:
+        {{ profile.creator.email }}
+      </ion-card-subtitle>
+      <ion-card-subtitle>
+        {{ "TRANSLATORS.profileCard.phone" | translate }}:
+        {{ profile.phone_number }}
+      </ion-card-subtitle>
+    </div>
+
+    <div class="ion-padding">
+      <app-rating
+        [rating]="profile?.average_rate"
+        [profile]="profile"
+        mode="showOnly"
+      ></app-rating>
+    </div>
+
+    <ion-card-subtitle
+      (click)="linkToSchedule(profile)"
+      class="see-availability"
+      >{{
+        "TRANSLATORS.profileCard.seeAvailability" | translate
+      }}</ion-card-subtitle
+    >
+  </ion-card-header>
+</ion-card>

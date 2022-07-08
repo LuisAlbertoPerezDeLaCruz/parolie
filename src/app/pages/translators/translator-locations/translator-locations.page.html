@@ -1,0 +1,147 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'TRANSLATORS.locations.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="translator-library"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="addLocation()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="ready">
+  <div *ngIf="!adding && ! editing">
+    <ion-card
+      class="ion-padding"
+      *ngFor="let location of locations, let idx=index"
+    >
+      <ion-card-header>
+        <ion-card-title>
+          <ion-grid class="ion-no-padding" fixed>
+            <ion-row>
+              <ion-col class="ion-no-padding" size="10">
+                {{location.name}}
+              </ion-col>
+              <ion-col class="ion-no-padding" size="2">
+                <ion-badge *ngIf="location.primary" color="success"
+                  >{{ 'TRANSLATORS.locations.primary' | translate }}</ion-badge
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-title>
+        <ion-card-subtitle>{{location.locality}}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <span *ngIf="location.address"> {{location.address}} <br /> </span>
+      </ion-card-content>
+      <ion-footer>
+        <div class="right">
+          <button (click)="edit(idx)">
+            <ion-icon name="create-outline"></ion-icon>
+            <div>{{ 'TRANSLATORS.locations.edit' | translate }}</div>
+          </button>
+
+          <button (click)="delete(idx)">
+            <ion-icon name="trash-outline"></ion-icon>
+            <div>{{ 'TRANSLATORS.locations.delete' | translate }}</div>
+          </button>
+        </div>
+      </ion-footer>
+    </ion-card>
+  </div>
+
+  <div *ngIf="adding || editing">
+    <form [formGroup]="locationForm" (ngSubmit)="createLocation()" novalidate>
+      <ion-item lines="none">
+        <ion-label position="stacked">
+          <span style="color: red">*</span>
+          {{ 'TRANSLATORS.locations.nameit' | translate }}</ion-label
+        >
+        <ion-input
+          type="text"
+          placeholder="Home location"
+          formControlName="name"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <i slot="start" class="fab fa-google"></i>
+        <ion-icon
+          slot="end"
+          color="primary fas fa-search-plus"
+          (click)="selectFromMap()"
+        ></ion-icon>
+
+        <ion-label>
+          <span style="color: red">*</span>
+          {{ 'TRANSLATORS.locations.locality' | translate }}</ion-label
+        >
+      </ion-item>
+
+      <ion-item lines="none" [hidden]="!locality" style="margin-top: -1em">
+        <ion-textarea
+          disabled
+          type="text"
+          placeholder="click here to find in Google Maps"
+          formControlName="locality"
+          [value]="locality"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item lines="none" [hidden]="!locality">
+        <ion-label position="stacked">
+          {{ 'TRANSLATORS.locations.address' | translate }}</ion-label
+        >
+
+        <ion-textarea
+          type="text"
+          placeholder="118 Boulevard Saint-Germain, 75006, Paris"
+          formControlName="address"
+          [value]="locationForm.get('address').value | trim | ucfirst"
+        ></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          {{ 'TRANSLATORS.locations.address-primary' | translate }}</ion-label
+        >
+        <ion-toggle
+          formControlName="primary"
+          [value]="locationForm.get('primary').value"
+        ></ion-toggle>
+      </ion-item>
+
+      <ion-button
+        color="danger"
+        type="button"
+        class="ion-padding-horizontal ion-margin-vertical"
+        (click)="cancel()"
+      >
+        {{ 'TRANSLATORS.locations.cancel' | translate }}
+      </ion-button>
+      <ion-button
+        *ngIf="adding"
+        color="primary"
+        type="submit"
+        class="ion-padding-horizontal ion-margin-vertical right"
+        [disabled]="!locationForm.valid"
+      >
+        {{ 'TRANSLATORS.locations.save' | translate }}
+      </ion-button>
+      <ion-button
+        *ngIf="editing"
+        color="primary"
+        (click)="saveLocation()"
+        class="ion-padding-horizontal ion-margin-vertical right"
+        [disabled]="!locationForm.valid || locationForm.pristine"
+      >
+        {{ 'TRANSLATORS.locations.save' | translate }}
+      </ion-button>
+      <br />
+    </form>
+  </div>
+</ion-content>

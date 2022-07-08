@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>location</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon name="close" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div #map id="map"></div>
+  <ion-searchbar
+    placeholder="City or place"
+    inputmode="text"
+    type="text"
+    (ionChange)="findPlace($event)"
+    [debounce]="500"
+    showCancelButton="always"
+  ></ion-searchbar>
+</ion-content>

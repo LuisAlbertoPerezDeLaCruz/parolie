@@ -1,0 +1,38 @@
+Instalaciones realizadas
+
+npm i @angular/fire rxfire firebase
+
+ionic g guard guards/auth --implements CanActivate
+ionic g guard guards/autoLogin --implements CanActivate
+
+npm i @ngx-translate/core @ngx-translate/http-loader
+npm i @ionic/storage
+npm install @ionic/storage-angular
+
+npm install --save ngx-socket-io
+npm install @capacitor/camera
+npm install @angular/material --force
+npm i @angular/animations@13.0.0 (la misma version de angular core en package.json)
+
+
+npm install @types/googlemaps --save-dev
+
+npm install @capacitor/geolocation
+
+En tsconfig.app.json:
+    "compilerOptions": {
+      "outDir": "./out-tsc/app",
+      "types": ["googlemaps"]
+    }
+
+npm install ngx-pipes --save 
+
+npm install @ionic/pwa-elements
+
+En main.ts:
+  import { defineCustomElements } from "@ionic/pwa-elements/loader";
+  defineCustomElements(window);
+
+npm add @angular/cdk
+npm install date-fns --save
+npm install --save ngx-date-fns

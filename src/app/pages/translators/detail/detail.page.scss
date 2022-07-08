@@ -1,0 +1,23 @@
+img.photo {
+  text-align: center;
+  display: block;
+  /* border-radius: 50%; */
+  position: relative;
+  border: 4px solid var(--ion-color-primary);
+  background-color: #fff;
+}
+
+img.avatar {
+  text-align: center;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  border: 4px solid var(--ion-color-primary);
+  background-color: #fff;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}

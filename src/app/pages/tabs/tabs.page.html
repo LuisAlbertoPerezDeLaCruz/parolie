@@ -1,0 +1,116 @@
+<ion-tabs (ionTabsDidChange)="tabChanged($event)">
+  <div *ngIf="user_role=='CLIENT'">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="client-home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>{{ 'TABS.home' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="client-search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>{{ 'TABS.search' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openInbox()">
+        <ion-icon
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          name="chatbox-outline"
+          style="color: tomato"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!(has_new_chats || has_new_notis || has_unread_notis)"
+          name="chatbox-outline"
+        ></ion-icon>
+        <div
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          class="bullet"
+        >
+          &bull;
+        </div>
+        <ion-label>{{ 'TABS.inbox' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="client-library">
+        <ion-icon name="library-outline"></ion-icon>
+        <ion-label>{{ 'TABS.library' | translate }}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
+
+  <div *ngIf="user_role=='TRANSLATOR'">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="translator-home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>{{ 'TABS.home' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="translator-search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>{{ 'TABS.search' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openInbox()">
+        <ion-icon
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          name="chatbox-outline"
+          style="color: tomato"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!(has_new_chats || has_new_notis || has_unread_notis)"
+          name="chatbox-outline"
+        ></ion-icon>
+
+        <div
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          class="bullet"
+        >
+          &bull;
+        </div>
+        <ion-label>{{ 'TABS.inbox' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="translator-library">
+        <ion-icon name="library-outline"></ion-icon>
+        <ion-label>{{ 'TABS.library' | translate }}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
+
+  <div *ngIf="user_role=='ADMINISTRATOR'">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="administrator-home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>{{ 'TABS.home' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="administrator-search">
+        <ion-icon name="search"></ion-icon>
+        <ion-label>{{ 'TABS.search' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="openInbox()">
+        <ion-icon
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          name="chatbox-outline"
+          style="color: tomato"
+        ></ion-icon>
+        <ion-icon
+          *ngIf="!(has_new_chats || has_new_notis || has_unread_notis)"
+          name="chatbox-outline"
+        ></ion-icon>
+        <div
+          *ngIf="has_new_chats || has_new_notis || has_unread_notis"
+          class="bullet"
+        >
+          &bull;
+        </div>
+        <ion-label>{{ 'TABS.inbox' | translate }}</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="administrator-library">
+        <ion-icon name="library-outline"></ion-icon>
+        <ion-label>{{ 'TABS.library' | translate }}</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </div>
+</ion-tabs>

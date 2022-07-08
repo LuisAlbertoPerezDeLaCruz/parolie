@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="false">
+  <ion-searchbar
+    showcancelbutton=""
+    (ionInput)="filterList($event)"
+  ></ion-searchbar>
+
+  <cdk-virtual-scroll-viewport
+    itemSize="56"
+    minBufferPx="900"
+    maxBufferPx="1350"
+  >
+    <ion-list>
+      <ion-item *cdkVirtualFor="let ctryItem of ctryList">
+        <ion-grid fixed>
+          <ion-row>
+            <ion-col size="2" (click)="selectCtry(ctryItem)">
+              <img [src]="ctryItem.flag" />
+            </ion-col>
+            <ion-col
+              size="10"
+              class="color-primary"
+              (click)="selectCtry(ctryItem)"
+              style="padding-top: 1em"
+            >
+              {{ ctryItem.name }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </cdk-virtual-scroll-viewport>
+</ion-content>

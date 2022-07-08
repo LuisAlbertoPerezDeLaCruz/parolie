@@ -1,0 +1,259 @@
+{
+  "BUTTONS": {
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "done": "hecho",
+    "reset": "Restablecer",
+    "clear": "Limpiar todo",
+    "save": "Guardar"
+  },
+  "ALERTS": {
+    "HEADERS": {
+      "error": "Error",
+      "resetPassword": "Restablecer la contraseña",
+      "missingVerification": "Falta verificación",
+      "accountCreated": "Cuenta creada"
+    },
+    "MESSAGES": {
+      "verifyEmail": "Verifica el correo electrónico para completar el registro.",
+      "almostReady": "Casi listo. Verifica el correo electrónico que se te envió."
+    }
+  },
+  "CONTROLS": {
+    "loading": "Cargando ...",
+    "TOAST": {
+      "successCheckEmail": "¡Éxito! Consulte sus correos electrónicos para obtener más información."
+    }
+  },
+  "LOGIN": {
+    "title": "Acceso",
+    "email": "Correo",
+    "name": "Nombre",
+    "password": "Clave",
+    "signWithEmail": "Iniciar sesión con correo",
+    "signWithGoogle": "Iniciar sesión con Google",
+    "createAccount": "Crear una cuenta",
+    "troubleLogin": "Problema de inicio de sesión",
+    "newAccount": "Nueva cuenta",
+    "selectRole": "Seleccionar rol",
+    "client": "Cliente",
+    "translator": "Traductor",
+    "register": "Registrarse",
+    "backToLogin": "Atrás para iniciar sesión",
+    "chooseRole": "Elige tu rol"
+  },
+  "TABS": {
+    "home": "Casa",
+    "search": "Buscar",
+    "library": "Catálogo",
+    "inbox": "Bandeja de entrada"
+  },
+  "CLIENTS": {
+    "home": {
+      "title": "Cliente Casa"
+    },
+    "library": {
+      "title": "Catálogo",
+      "switch-mode": "Yo como traductor",
+      "become-translator": "Conviértete en un traductor",
+      "agenda": "Mi Agenda"
+    },
+    "search": {
+      "title": "Buscar",
+      "location": "Ubicación",
+      "assignSearchOptions": "Asignar opciones de búsqueda",
+      "iSpeak": "Yo hablo",
+      "translatorMustSpeak": "Traductor debe hablar",
+      "services": "Servicios",
+      "set": "Establecer",
+      "cancel": "Cancelar",
+      "start": "Comienza",
+      "end": "Finaliza",
+      "cantFindResultsFor": "No hay resultados para",
+      "tap": "Toque",
+      "here": "aquí",
+      "toViewChangeCriteria": "para ver/cambiar criteria de búsqueda",
+      "from": "desde",
+      "until": "hasta"
+    },
+    "agenda": {
+      "title": "Agenda"
+    }
+  },
+  "TRANSLATORS": {
+    "home": {
+      "title": "Traductor Casa",
+      "welcome": "Bienvenido a parolie.com, lo vamos a ayudar a completar la información necesaria para comenzar su negocio de traducción lo antes posible. Complete los elementos sin marcar.",
+      "steps": {
+        "1": "Complete su perfil",
+        "2": "Perfil/revisado/aprobado",
+        "3": "Cree su disponibilidad"
+      }
+    },
+    "library": {
+      "title": "Catálogo",
+      "profile": "Mi Perfil",
+      "schedulle": "Mi Calendario",
+      "agenda": "Mi Agenda",
+      "locations": "Mis Ubicaciones",
+      "reservations": "Mis Reservaciones",
+      "reviews": "My Reseñas",
+      "switch-mode": "Yo como cliente"
+    },
+    "availability": {
+      "title": "Disponibilidad",
+      "week": "Semana",
+      "day": "Dia",
+      "month": "Mes",
+      "cal-modal": {
+        "starttime": "Hora Comienzo",
+        "endtime": "Hora finalización",
+        "recurring": "Disponibilidad recurrente",
+        "repetitions": "Numbero de repeticiones",
+        "weekdays": {
+          "monday": "Lines",
+          "tuesday": "Martes",
+          "wednesday": "Miercoles",
+          "thursday": "Jueves",
+          "friday": "Viernes",
+          "saturday": "Sabado",
+          "sunday": "Domingo"
+        },
+        "event-title": "disponibilidad"
+      },
+      "no-availability-set": "Sin disponibilidad establecida",
+      "edit-cal-entry": {
+        "starttime": "Hora Comienzo",
+        "endtime": "Hora finalización",
+        "change-or-delete": "Cambiar o eliminar",
+        "no-data-to-show": "No hay datos para mostrar",
+        "delete-this-or-all": "¿Eliminar esta fecha o todas?",
+        "delete-remaining": "Eliminar todo lo que queda",
+        "delete-only-this": "Eliminar solo esta fecha",
+        "apply-this-or-all": "¿Aplicar a esta fecha o a todas?",
+        "apply-remaining": "Aplicar a todos los restantes",
+        "apply-only-this": "Aplicar solo a esta fecha"
+      }
+    },
+    "locations": {
+      "title": "Ubicaciones",
+      "primary": "Primaria",
+      "edit": "Editar",
+      "delete": "Eliminar",
+      "nameit": "Nombra tu ubicación",
+      "locality": "Localidad (seleccionar de Mapas)",
+      "address": "Dirección completa (opcional)",
+      "address-primary": "Dirección primaria",
+      "cancel": "Cancelar",
+      "save": "Gardar"
+    },
+    "reservations": {
+      "title": "Reservaciones",
+      "tabs": {
+        "blocked": "Obstruida",
+        "approved": "Aprobada",
+        "expired": "Caducada",
+        "disapproved": "Desaprobada",
+        "cancelled": "Cancelada",
+        "delivered": "Entregada"
+      },
+      "emptystate": "No hay entradas para listar",
+      "detail": {
+        "approve": "Aprobar",
+        "disapprove": "Desaprobar",
+        "chat": "Charlar"
+      }
+    },
+    "schedulle": {
+      "title": "Calendario",
+      "month": "Mes",
+      "week": "Semana",
+      "day": "Dia",
+      "agenda": "Agenda",
+      "createEdit": {
+        "newAvailability": "Nueva disponibilidad",
+        "editAvailability": "Editar disponibilidad",
+        "add": "Agregar",
+        "save": "Guardar",
+        "cancel": "Cancelar",
+        "title": "Título",
+        "location": "Ubicación",
+        "allDay": "Todo el día",
+        "starts": "Comienza",
+        "ends": "Finaliza",
+        "deleteEvent": "Eliminar"
+      }
+    },
+    "profile": {
+      "title": "Perfil"
+    },
+    "agenda": {
+      "title": "Agenda",
+      "reservation": {
+        "title": "Reservación",
+        "client": "CLiente",
+        "locality": "Ubicación"
+      }
+    },
+    "search": {
+      "title": "Buscar"
+    },
+    "inbox": {
+      "title": "Bandeja de entrada",
+      "messages": "Mensajes",
+      "notifications": "Notificaciones",
+      "notificationType": "Notificaciones",
+      "unread": "Sin leer",
+      "read": "Leídas",
+      "all": "Todas"
+    },
+    "profileCard": {
+      "about": "Sobre",
+      "email": "email",
+      "phone": "teléfono",
+      "seeAvailability": "ver disponibilidad"
+    },
+    "ratingComponent": {
+      "more": "mas"
+    },
+    "ratingDetails": {
+      "rate": "Calificación",
+      "ratedBy": "por",
+      "reviews": "Reseñas",
+      "clientsFeedBack": "Comentarios de los clientes",
+      "averageRate": "Calificación promedio",
+      "comment": "Comentario"
+    }
+  },
+  "ADMINISTRATOR": {
+    "home": {
+      "title": "Administrador Inicio",
+      "translatorsPendingApproval": "Traductores pendientes de aprobación",
+      "translatorsApproved": "Traductores aprobados"
+    }
+  },
+  "CHAT": {
+    "title": "Charlar con",
+    "me": "Yo"
+  },
+  "LANGUAGES": {
+    "EN": "Inglés",
+    "SP": "Español",
+    "FR": "Francés",
+    "IT": "Italiano",
+    "DE": "Alemán",
+    "ZH": "Chino"
+  },
+  "SERVICES": {
+    "TR": "Asistencia de traducción",
+    "DC": "Traducción de documentos"
+  },
+  "RATE": {
+    "on": "El",
+    "youReceived": "usted recibió asistencia de traducción. Nos gustaría saber cómo califica el trabajo del traductor",
+    "comments": "Comentarios",
+    "send": "Enviar",
+    "howDidItGo": "Como le fué",
+    "thankYou": "Muchas gracias"
+  }
+}

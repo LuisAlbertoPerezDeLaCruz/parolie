@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ "RATE.howDidItGo" | translate }} ?</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <div class="ion-padding ion-text-center grey">{{message}}</div>
+  <div class="ion-padding">
+    <app-rating
+      [rating]="rating"
+      (ratingChange)="updateRating($event)"
+      mode="showUpdate"
+    ></app-rating>
+  </div>
+  <div class="ion-padding ion-text-center">
+    <ion-item>
+      <ion-label position="floating"
+        >{{ "RATE.comments" | translate }}:</ion-label
+      >
+      <ion-textarea [(ngModel)]="comments" class="grey"></ion-textarea>
+    </ion-item>
+  </div>
+  <div class="ion-text-end">
+    <ion-button
+      expand="block"
+      type="submit"
+      class="ion-padding-horizontal ion-margin-vertical"
+      [disabled]="rating==0"
+      (click)="send()"
+    >
+      <ion-icon slot="end" name="checkmark"></ion-icon>
+      {{ "RATE.send" | translate }}
+    </ion-button>
+  </div>
+</ion-content>

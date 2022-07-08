@@ -1,0 +1,259 @@
+{
+  "BUTTONS": {
+    "ok": "好的",
+    "cancel": "取消",
+    "reset": "重置",
+    "done": "完成",
+    "clear": "清除",
+    "save": "儲存"
+  },
+  "ALERTS": {
+    "HEADERS": {
+      "error": "錯誤",
+      "resetPassword": "重設密碼",
+      "missingVerification": "缺少驗證",
+      "accountCreated": "帳戶已建立"
+    },
+    "MESSAGES": {
+      "verifyEmail": "請驗證電子郵件以完成註冊。",
+      "almostReady": "快好了。請驗證發送給您的電子郵件。"
+    }
+  },
+  "CONTROLS": {
+    "loading": "載入中...",
+    "TOAST": {
+      "successCheckEmail": "成功！檢查您的電子郵件以獲取更多信息。"
+    }
+  },
+  "LOGIN": {
+    "title": "登錄",
+    "email": "電子郵件",
+    "name": "姓名",
+    "password": "密碼",
+    "signWithEmail": "用電子郵件登錄",
+    "signWithGoogle": "使用Google登錄",
+    "createAccount": "創建帳號",
+    "troubleLogin": "無法登錄",
+    "newAccount": "新賬戶",
+    "selectRole": "選擇身份",
+    "client": "客戶",
+    "translator": "譯者",
+    "register": "登記",
+    "backToLogin": "回到登入",
+    "chooseRole": "身份"
+  },
+  "TABS": {
+    "home": "首頁",
+    "search": "搜尋",
+    "library": "資料庫",
+    "inbox": "收件箱"
+  },
+  "CLIENTS": {
+    "home": {
+      "title": "客戶首頁"
+    },
+    "library": {
+      "title": "譯者的圖書館",
+      "switch-mode": "我當翻譯",
+      "become-translator": "成為一名翻譯",
+      "agenda": "我的議程"
+    },
+    "search": {
+      "title": "搜索",
+      "location": "地點",
+      "assignSearchOptions": "分配搜索選項",
+      "iSpeak": "我說",
+      "translatorMustSpeak": "譯者必須說話",
+      "services": "服務",
+      "set": "定",
+      "cancel": "取消",
+      "start": "開始",
+      "end": "結尾",
+      "cantFindResultsFor": "找不到任何結果",
+      "tap": "敲擊",
+      "here": "這裡",
+      "toViewChangeCriteria": "查看/更改搜索條件",
+      "from": "從",
+      "until": "直到"
+    },
+    "agenda": {
+      "title": "我的議程"
+    }
+  },
+  "TRANSLATORS": {
+    "home": {
+      "title": "譯者首頁",
+      "welcome": "歡迎訪問parolie.com，我們將幫助您完成所需訊息，以便盡快開始您的翻譯業務。請填寫以下欄目",
+      "steps": {
+        "1": "完成您的個人資料",
+        "2": "個人資料已審核/批准",
+        "3": "選擇您的空房狀況"
+      }
+    },
+    "library": {
+      "title": "譯者的圖書館",
+      "profile": "我的頁面",
+      "schedulle": "我的日程表",
+      "agenda": "我的議程",
+      "locations": "我的位置",
+      "reservations": "我的預定",
+      "reviews": "我的評論",
+      "switch-mode": "我作為客戶"
+    },
+    "availability": {
+      "title": "空餘時間",
+      "week": "週",
+      "day": "天",
+      "month": "月",
+      "cal-modal": {
+        "starttime": "開始時間",
+        "endtime": "結束時間",
+        "recurring": "空餘時間循環",
+        "repetitions": "重複次數",
+        "weekdays": {
+          "monday": "禮拜一",
+          "tuesday": "禮拜二",
+          "wednesday": "禮拜三",
+          "thursday": "禮拜四",
+          "friday": "禮拜五",
+          "saturday": "禮拜六",
+          "sunday": "禮拜天"
+        },
+        "event-title": "可用性"
+      },
+      "no-availability-set": "未設置可用性",
+      "edit-cal-entry": {
+        "starttime": "開始時間",
+        "endtime": "結束時間",
+        "change-or-delete": "更改或刪除",
+        "no-data-to-show": "沒有數據可顯示",
+        "delete-this-or-all": "刪除這個日期還是全部？",
+        "delete-remaining": "刪除所有剩餘",
+        "delete-only-this": "僅刪除此日期",
+        "apply-this-or-all": "適用於此日期還是全部？",
+        "apply-remaining": "適用於所有剩餘的",
+        "apply-only-this": "僅適用於該日期"
+      }
+    },
+    "locations": {
+      "title": "地點",
+      "primary": "基本的",
+      "edit": "編輯",
+      "delete": "刪除",
+      "nameit": "命名您的位置",
+      "locality": "地區（從地圖中選擇）",
+      "address": "完整地址（可選）",
+      "address-primary": "首要地址",
+      "cancel": "取消",
+      "save": "已保存"
+    },
+    "reservations": {
+      "title": "預訂",
+      "tabs": {
+        "blocked": "被封鎖",
+        "approved": "得到正式認可的",
+        "expired": "已到期",
+        "disapproved": "未獲批准",
+        "cancelled": "取消",
+        "delivered": "發表"
+      },
+      "emptystate": "沒有要列出的條目",
+      "detail": {
+        "approve": "批准",
+        "disapprove": "不贊成",
+        "chat": "聊天"
+      }
+    },
+    "schedulle": {
+      "title": "日程",
+      "month": "月",
+      "week": "星期",
+      "day": "日",
+      "agenda": "議程",
+      "createEdit": {
+        "newAvailability": "新的可用性",
+        "editAvailability": "編輯可用性",
+        "add": "添加",
+        "save": "節省",
+        "cancel": "取消",
+        "title": "標題",
+        "location": "地點",
+        "allDay": "一整天",
+        "starts": "開始",
+        "ends": "結束",
+        "deleteEvent": "刪除"
+      }
+    },
+    "profile": {
+      "title": "輪廓"
+    },
+    "agenda": {
+      "title": "議程",
+      "reservation": {
+        "title": "預訂",
+        "client": "客戶",
+        "locality": "地方"
+      }
+    },
+    "search": {
+      "title": "搜索"
+    },
+    "inbox": {
+      "title": "收件箱",
+      "messages": "留言",
+      "notifications": "",
+      "notificationType": "通知",
+      "unread": "未讀",
+      "read": "讀",
+      "all": "全部"
+    },
+    "profileCard": {
+      "about": "關於",
+      "email": "電子郵件",
+      "phone": "電話",
+      "seeAvailability": "查看可用性"
+    },
+    "ratingComponent": {
+      "more": "更多的"
+    },
+    "ratingDetails": {
+      "rate": "速度",
+      "ratedBy": "經過",
+      "reviews": "評論",
+      "clientsFeedBack": "客戶反饋",
+      "averageRate": "平均率",
+      "comment": "評論"
+    }
+  },
+  "ADMINISTRATOR": {
+    "home": {
+      "title": "管理員主頁",
+      "translatorsPendingApproval": "翻譯人員正在等待批准",
+      "translatorsApproved": "翻譯人員已獲得批准"
+    }
+  },
+  "CHAT": {
+    "title": "和...聊天",
+    "me": "我"
+  },
+  "LANGUAGES": {
+    "EN": "英語",
+    "SP": "西班牙語",
+    "FR": "法語",
+    "IT": "意大利語",
+    "DE": "德語",
+    "ZH": "中文"
+  },
+  "SERVICES": {
+    "TR": "翻譯協助",
+    "DC": "文件翻譯"
+  },
+  "RATE": {
+    "on": "在",
+    "youReceived": "你得到了翻譯的幫助。 我們想知道您如何評價譯者的工作",
+    "comments": "評論",
+    "send": "發送",
+    "howDidItGo": "進展如何",
+    "thankYou": "謝謝"
+  }
+}

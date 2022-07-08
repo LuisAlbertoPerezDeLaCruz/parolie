@@ -1,0 +1,54 @@
+<ion-card *ngIf="noti.metadata.subtype == 'RESERVATION' && canShow">
+  <ion-card-header class="ion-no-padding">
+    <ion-card-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50 class="ion-text-left">
+            {{ noti?.title }}
+          </ion-col>
+          <ion-col width-50 class="ion-text-right" (click)="donShow(noti)">
+            <i class="far fa-trash-alt"></i>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <div><p [innerHtml]="noti?.message"></p></div>
+    <div *ngIf="showMore">
+      <div>
+        Client:
+        {{ noti?.client }}
+      </div>
+      <div>
+        Reservation date:
+        {{ noti?.reservation_date | dfnsFormat: "iii d LLL - h:mm aaa" }}
+      </div>
+      <div>
+        Translator:
+        {{ noti?.translator }}
+      </div>
+      <div>
+        Location:
+        {{ noti?.location }}
+      </div>
+      <div>
+        Requirements:
+        {{ noti?.requirements }}
+      </div>
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col width-50 class="link" (click)="linkToReservations()"
+            >View</ion-col
+          >
+          <ion-col width-50 class="noti-date"
+            >{{ noti?.date | dfnsFormat: "iii d LLL - h:mm aaa" }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngIf="!showMore">
+      {{ noti?.date | dfnsFormat: "iii d LLL - h:mm aaa" }}
+    </div>
+  </ion-card-content>
+</ion-card>

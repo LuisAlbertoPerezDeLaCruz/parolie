@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ 'TRANSLATORS.reservations.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="translator-library"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end"> </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div
+    *ngIf="!canEdit"
+    class="ion-padding"
+    style="
+      text-align: center;
+      text-decoration: underline;
+      padding-top: 0.5em;
+      padding-bottom: 1em;
+    "
+  >
+    {{translator?.name}}
+  </div>
+  <ion-segment
+    [scrollable]="scrollable"
+    [(ngModel)]="tab"
+    (ionChange)="segmentChanged($event)"
+    *ngIf="ready"
+  >
+    <ion-segment-button value="BLOCKED">
+      <ion-label *ngIf="blocked_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.blocked' | translate }}
+        ({{blocked_list.length}})</ion-label
+      >
+      <ion-label *ngIf="blocked_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.blocked' | translate }}</ion-label
+      >
+    </ion-segment-button>
+
+    <ion-segment-button value="APPROVED">
+      <ion-label *ngIf="approved_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.approved' | translate }}
+        ({{approved_list.length}})</ion-label
+      >
+      <ion-label *ngIf="approved_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.approved' | translate }}
+      </ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="EXPIRED">
+      <ion-label *ngIf="expired_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.expired' | translate }}
+        ({{expired_list.length}})</ion-label
+      >
+      <ion-label *ngIf="expired_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.expired' | translate }}
+      </ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="DISAPPROVED" *ngIf="disapproved_list.length>0">
+      <ion-label *ngIf="disapproved_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.disapproved' | translate }}
+        ({{disapproved_list.length}})</ion-label
+      >
+      <ion-label *ngIf="disapproved_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.disapproved' | translate
+        }}</ion-label
+      >
+    </ion-segment-button>
+
+    <ion-segment-button value="CANCELLED" *ngIf="cancelled_list.length>0">
+      <ion-label *ngIf="cancelled_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.cancelled' | translate }}
+        ({{cancelled_list.length}})</ion-label
+      >
+      <ion-label *ngIf="cancelled_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.cancelled' | translate }}</ion-label
+      >
+    </ion-segment-button>
+
+    <ion-segment-button value="DELIVERED" *ngIf="delivered_list.length>0">
+      <ion-label *ngIf="delivered_list.length>0"
+        >{{ 'TRANSLATORS.reservations.tabs.delivered' | translate }}
+        ({{delivered_list.length}})</ion-label
+      >
+      <ion-label *ngIf="delivered_list.length==0"
+        >{{ 'TRANSLATORS.reservations.tabs.delivered' | translate }}</ion-label
+      >
+    </ion-segment-button>
+  </ion-segment>
+  <div>
+    <ion-list>
+      <app-reservation-detail
+        *ngFor="let reservation of reservations_list"
+        [reservation]="reservation"
+        [canEdit]="canEdit"
+        [token]="translator.auth_api_token"
+      ></app-reservation-detail>
+    </ion-list>
+  </div>
+  <div *ngIf="ready && reservations_list.length==0" class="ion-padding">
+    {{ 'TRANSLATORS.reservations.emptystate' | translate }}
+  </div>
+</ion-content>

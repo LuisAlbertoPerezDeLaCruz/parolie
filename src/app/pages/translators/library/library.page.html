@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="translator-home"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" (click)="switchMode('CLIENT')">
+      <i class="fas fa-user-alt"></i>
+    </ion-buttons>
+    <ion-buttons slot="end"> </ion-buttons>
+    <ion-title>{{ 'TRANSLATORS.library.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list
+    style="padding-top: 2em"
+    *ngIf="translator  && translator.roles.includes('TRANSLATOR')"
+  >
+    <ion-item routerLink="profile">
+      <i slot="start" class="far fa-address-card fa-1x"></i>
+      <ion-icon
+        color="primary"
+        slot="end"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label> {{ 'TRANSLATORS.library.profile' | translate }}</ion-label>
+    </ion-item>
+    <ion-item routerLink="schedulle" [hidden]="!translator.statuses.aproved">
+      <i slot="start" class="far fa-calendar fa-1x"></i>
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label> {{ 'TRANSLATORS.library.schedulle' | translate }}</ion-label>
+    </ion-item>
+    <ion-item routerLink="translator-agenda">
+      <i slot="start" class="far fa-calendar fa-1x"></i>
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label> {{ 'TRANSLATORS.library.agenda' | translate }}</ion-label>
+    </ion-item>
+    <ion-item routerLink="locations" [hidden]="!translator.statuses.aproved">
+      <i slot="start" class="fas fa-map-marker-alt"></i>
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="chevron-forward-outline"
+      ></ion-icon>
+
+      <ion-label> {{ 'TRANSLATORS.library.locations' | translate }}</ion-label>
+    </ion-item>
+    <ion-item
+      routerLink="reservations"
+      [hidden]="!translator.statuses.created_availability"
+    >
+      <i slot="start" class="far fa-calendar-check fa-1x"></i>
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label>
+        {{ 'TRANSLATORS.library.reservations' | translate }}</ion-label
+      >
+    </ion-item>
+    <ion-item (click)="showMyReviews()" style="cursor: pointer">
+      <i slot="start" class="far fa-calendar-check fa-1x"></i>
+      <ion-icon
+        slot="end"
+        color="primary"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label> {{ 'TRANSLATORS.library.reviews' | translate }}</ion-label>
+    </ion-item>
+    <ion-item (click)="switchMode('CLIENT')" style="cursor: pointer">
+      <i slot="start" class="fas fa-user-alt fa-1x"></i>
+      <ion-icon
+        color="primary"
+        slot="end"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label>
+        {{ 'TRANSLATORS.library.switch-mode' | translate }}</ion-label
+      >
+    </ion-item>
+  </ion-list>
+  <ion-list
+    style="padding-top: 2em"
+    *ngIf="translator && !translator.roles.includes('TRANSLATOR')"
+  >
+    <ion-item (click)="switchMode('CLIENT')">
+      <i slot="start" class="fas fa-user-alt fa-1x"></i>
+      <ion-icon
+        color="primary"
+        slot="end"
+        name="chevron-forward-outline"
+      ></ion-icon>
+      <ion-label>
+        {{ 'TRANSLATORS.library.switch-mode' | translate }}</ion-label
+      >
+    </ion-item>
+  </ion-list>
+</ion-content>

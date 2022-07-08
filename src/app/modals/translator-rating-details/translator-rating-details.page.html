@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{profile.first_name}} {{profile.last_name}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="close" slot="icon-only" (click)="close()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <div class="title ion-padding">
+      {{ "TRANSLATORS.ratingDetails.clientsFeedBack" | translate }}
+    </div>
+    <app-rating
+      [rating]="profile?.average_rate"
+      mode="showOnDetail"
+    ></app-rating>
+    <div class="average">
+      {{ "TRANSLATORS.ratingDetails.averageRate" | translate }}:
+      {{profile.average_rate}}
+    </div>
+  </div>
+  <div class="ion-padding">
+    <div style="padding-left: 12px">
+      {{ "TRANSLATORS.ratingDetails.reviews" | translate }}:
+    </div>
+
+    <mbsc-card *ngFor="let rating of profile.ratings">
+      <mbsc-card-content>
+        {{ "TRANSLATORS.ratingDetails.rate" | translate }}: {{ rating.rate }}
+        &nbsp;&nbsp; <i>({{rating.createdAtHumanized}})</i>
+        <span *ngIf="user_role=='TRANSLATOR'">
+          <br />
+          {{ "TRANSLATORS.ratingDetails.ratedBy" | translate }}:
+          {{rating.creator_name}}
+        </span>
+        <br />
+        <span *ngIf="rating.comments">
+          {{ "TRANSLATORS.ratingDetails.comment" | translate }}: {{
+          rating.comments }}
+        </span>
+      </mbsc-card-content>
+    </mbsc-card>
+  </div>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="client-home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'CLIENTS.library.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <ion-list style="padding-top: 2em">
+      <ion-item routerLink="client-agenda">
+        <i slot="start" class="far fa-calendar fa-1x"></i>
+        <ion-icon
+          slot="end"
+          color="primary"
+          name="chevron-forward-outline"
+        ></ion-icon>
+        <ion-label> {{ 'CLIENTS.library.agenda' | translate }}</ion-label>
+      </ion-item>
+      <ion-item *ngIf="is_translator" (click)="switchMode('TRANSLATOR')">
+        <i slot="start" class="fas fa-hands-helping fa-1x"></i>
+        <ion-icon
+          color="primary"
+          slot="end"
+          name="chevron-forward-outline"
+        ></ion-icon>
+        <ion-label> {{ 'CLIENTS.library.switch-mode' | translate }}</ion-label>
+      </ion-item>
+      <ion-item *ngIf="!is_translator" (click)="switchMode('TRANSLATOR')">
+        <i slot="start" class="fas fa-hands-helping fa-1x"></i>
+        <ion-icon
+          color="primary"
+          slot="end"
+          name="chevron-forward-outline"
+        ></ion-icon>
+        <ion-label>
+          {{ 'CLIENTS.library.become-translator' | translate }}</ion-label
+        >
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-content>

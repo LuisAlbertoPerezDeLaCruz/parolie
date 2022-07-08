@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="translator-library"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'TRANSLATORS.agenda.title' | translate }}</ion-title>
+    <ion-buttons slot="end"> </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <mbsc-eventcalendar
+    [eventContentTemplate]="contentTemplate"
+    [data]="myEvents"
+    [options]="eventSettings"
+    class="md-custom-event"
+  ></mbsc-eventcalendar>
+
+  <ng-template #contentTemplate let-data>
+    <div>{{ 'TRANSLATORS.agenda.reservation.title' | translate }}</div>
+    <div class="md-custom-event-cont">
+      <img
+        class="md-custom-event-img"
+        src="{{data.original.avatar}}"
+        referrerpolicy="no-referrer"
+      />
+      <div class="mbsc-custom-event-name">
+        {{ 'TRANSLATORS.agenda.reservation.client' | translate }}:
+        {{data.original.name}}
+        <br />
+        {{ 'TRANSLATORS.agenda.reservation.locality' | translate }}:
+        {{data.original.locality}}
+      </div>
+    </div>
+  </ng-template>
+</ion-content>

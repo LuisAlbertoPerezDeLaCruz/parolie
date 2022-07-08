@@ -1,0 +1,260 @@
+{
+  "BUTTONS": {
+    "ok": "OK",
+    "cancel": "Stornieren",
+    "reset": "Zurücksetzen",
+    "done": "Fertig",
+    "clear": "Alle löschen",
+    "save": "Registrieren"
+  },
+  "ALERTS": {
+    "HEADERS": {
+      "error": "Error",
+      "resetPassword": "Passwort zurücksetzen",
+      "missingVerification": "Fehlende Überprüfung",
+      "accountCreated": "Account erstellt"
+    },
+    "MESSAGES": {
+      "verifyEmail": "Bitte überprüfen Sie Ihre E-Mail-Adresse, um die Registrierung abzuschließen.",
+      "almostReady": "Fast bereit. Bitte überprüfen Sie die an Sie gesendete E-Mail."
+    }
+  },
+  "CONTROLS": {
+    "loading": "Wird geladen ...",
+    "TOAST": {
+      "successCheckEmail": "Erfolg! Überprüfen Sie Ihre E-Mails für weitere Informationen."
+    }
+  },
+  "LOGIN": {
+    "title": "Anmeldung",
+    "email": "Email",
+    "name": "Name",
+    "password": "Passwort",
+    "signWithEmail": "Melden Sie sich mit E-Mail an",
+    "signWithGoogle": "Anmeldung mit Google",
+    "createAccount": "Konto erstellen",
+    "troubleLogin": "Fehler beim Anmelden",
+    "newAccount": "Neues Konto",
+    "selectRole": "Wählen Sie Rolle",
+    "client": "Klient",
+    "translator": "Übersetzer",
+    "register": "Registrieren",
+    "backToLogin": "Zurück zur Anmeldung",
+    "chooseRole": "Wählen Sie Ihre Rolle"
+  },
+  "TABS": {
+    "home": "Zuhause",
+    "search": "Suche",
+    "library": "Katalog",
+    "Inbox": "Posteingang"
+  },
+  "CLIENTS": {
+    "home": {
+      "title": "Kunden nach Hause",
+      "switch-mode": "Ich als Übersetzer",
+      "become-translator": "Übersetzer werden",
+      "agenda": "Meine Agenda"
+    },
+    "library": {
+      "title": "Katalog",
+      "switch-mode": "Ich als Übersetzer"
+    },
+    "search": {
+      "title": "Suche",
+      "location": "Standorte",
+      "assignSearchOptions": "Suchoptionen zuweisen",
+      "iSpeak": "ich spreche",
+      "translatorMustSpeak": "Übersetzer muss sprechen",
+      "services": "Dienstleistungen",
+      "set": "Setzen",
+      "cancel": "Abbrechen",
+      "start": "Anfang",
+      "end": "Ende",
+      "cantFindResultsFor": "Kann keine Ergebnisse finden für",
+      "tap": "Klopfen",
+      "here": "hier",
+      "toViewChangeCriteria": "to view/change search criteria",
+      "from": "von",
+      "until": "noch bis"
+    },
+    "agenda": {
+      "title": "Agenda"
+    }
+  },
+  "TRANSLATORS": {
+    "home": {
+      "title": "Übersetzer nach Hause",
+      "welcome": "Willkommen bei parolie.com. Wir helfen Ihnen dabei, die Informationen zu vervollständigen, die erforderlich sind, um Ihr Übersetzungsgeschäft so schnell wie möglich zu starten. Bitte vervollständigen Sie die ungeprüften Punkte.",
+      "steps": {
+        "1": "vervollständige dein Profil",
+        "2": "Profil überprüft / genehmigt",
+        "3": "Verfügbarkeit erstellen"
+      }
+    },
+    "library": {
+      "title": "Katalog",
+      "profile": "Mein profil",
+      "schedulle": "Mein Terminplan",
+      "agenda": "Meine Agenda",
+      "locations": "Meine Standorte",
+      "reservations": "Meine vorbehalte",
+      "reviews": "Meine Bewertungen",
+      "switch-mode": "Ich als Kunde"
+    },
+    "availability": {
+      "title": "Verfügbarkeit",
+      "week": "Woche",
+      "day": "Tag",
+      "month": "Monat",
+      "cal-modal": {
+        "starttime": "Startzeit",
+        "endtime": "Endzeit",
+        "recurring": "Periodische verfügbarkeit",
+        "repetitions": "Anzahl der Wiederholungen",
+        "weekdays": {
+          "monday": "Montag",
+          "tuesday": "Dienstag",
+          "wednesday": "Mittwoch",
+          "thursday": "Donnerstag",
+          "friday": "Freitag",
+          "saturday": "Samstag",
+          "sunday": "Sonntag"
+        },
+        "event-title": "Verfügbarkeit"
+      },
+      "no-availability-set": "Keine Verfügbarkeit festgelegt",
+      "edit-cal-entry": {
+        "starttime": "Startzeit",
+        "endtime": "Endzeit",
+        "change-or-delete": "Ändern oder löschen",
+        "no-data-to-show": "Keine Daten zu zeigen",
+        "delete-this-or-all": "Dieses Datum oder alle löschen?",
+        "delete-remaining": "Alle verbleibenden löschen",
+        "delete-only-this": "Löschen Sie nur dieses Datum",
+        "apply-this-or-all": "Bis zu diesem Datum bewerben oder alle?",
+        "apply-remaining": "Auf alle verbleibenden anwenden",
+        "apply-only-this": "Bewerben Sie sich nur bis zu diesem Datum"
+      }
+    },
+    "locations": {
+      "title": "Standorte",
+      "primary": "Primär",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "nameit": "Benennen Sie Ihren Standort",
+      "locality": "Ort (aus Karten auswählen)",
+      "address": "Vollständige Adresse (optional)",
+      "address-primary": "Hauptadresse",
+      "cancel": "Abbrechen",
+      "save": "Speichern"
+    },
+    "reservations": {
+      "title": "Reservierungen",
+      "tabs": {
+        "blocked": "Verstopft",
+        "approved": "Genehmigt",
+        "expired": "Abgelaufen",
+        "disapproved": "Abgelehnt",
+        "cancelled": "Storniert",
+        "delivered": "Geliefert"
+      },
+      "emptystate": "Es gibt keine Einträge zum Auflisten",
+      "detail": {
+        "approve": "Genehmigen",
+        "disapprove": "Missbilligen",
+        "chat": "Plaudern"
+      }
+    },
+    "schedulle": {
+      "title": "Zeitlicher Ablauf",
+      "month": "Monat",
+      "week": "Woche",
+      "day": "Tag",
+      "agenda": "Agenda",
+      "createEdit": {
+        "newAvailability": "Neue Verfügbarkeit",
+        "editAvailability": "Verfügbarkeit bearbeiten",
+        "add": "Hinzufügen",
+        "save": "Gerettet",
+        "cancel": "Abbrechen",
+        "title": "Titel",
+        "location": "Lage",
+        "allDay": "den ganzen Tag",
+        "starts": "Beginnt",
+        "ends": "Endet",
+        "deleteEvent": "Löschen"
+      }
+    },
+    "profile": {
+      "title": "Profil"
+    },
+    "agenda": {
+      "title": "Agenda",
+      "reservation": {
+        "title": "Reservierung",
+        "client": "Klientin",
+        "locality": "Lokalität"
+      }
+    },
+    "search": {
+      "title": "Search"
+    },
+    "inbox": {
+      "title": "Posteingang",
+      "messages": "Mitteilungen",
+      "notifications": "Benachrichtigungen",
+      "notificationType": "Benachrichtigungen",
+      "unread": "Ungelesen",
+      "read": "Lesen",
+      "all": "Alle"
+    },
+    "profileCard": {
+      "about": "Über",
+      "email": "email",
+      "phone": "telefon",
+      "seeAvailability": "Siehe Verfügbarkeit"
+    },
+    "ratingComponent": {
+      "more": "mehr"
+    },
+    "ratingDetails": {
+      "rate": "Rate",
+      "ratedBy": "durch",
+      "reviews": "Bewertungen",
+      "clientsFeedBack": "Kundenfeedback",
+      "averageRate": "Durchschnittsrate",
+      "comment": "Kommentar"
+    }
+  },
+  "ADMINISTRATOR": {
+    "home": {
+      "title": "Administrator-Startseite",
+      "translatorsPendingApproval": "Übersetzer müssen noch genehmigt werden",
+      "translatorsApproved": "Übersetzer genehmigt"
+    }
+  },
+  "CHAT": {
+    "title": "Plaudern mit",
+    "me": "Mich"
+  },
+  "LANGUAGES": {
+    "EN": "Englisch",
+    "SP": "Spanisch",
+    "FR": "Französisch",
+    "IT": "Italienisch",
+    "DE": "Deutsch",
+    "ZH": "Chinesisch"
+  },
+  "SERVICES": {
+    "TR": "Übersetzungshilfe",
+    "DC": "Dokumentübersetzungen"
+  },
+  "RATE": {
+    "on": "Am",
+    "youReceived": "Sie haben Übersetzungshilfe erhalten. Wir würden gerne wissen, wie Sie die Arbeit des Übersetzers bewerten",
+    "comments": "Bemerkungen",
+    "send": "Senden",
+    "howDidItGo": "Wie ist es gelaufen",
+    "thankYou": "Danke schön"
+  }
+}

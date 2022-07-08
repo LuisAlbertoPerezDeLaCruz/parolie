@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title
+      >{{ 'CLIENTS.search.title' | translate }}: {{ 'CLIENTS.search.from' |
+      translate }} {{ startTime | dfnsFormat: "iii d LLL" }} {{
+      'CLIENTS.search.until' | translate }} {{ endTime | dfnsFormat: "iii d LLL"
+      }}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="searchFilter()">
+        <i class="fas fa-filter"></i>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    placeholder="{{ translate.instant('CLIENTS.search.location') }}"
+    (ionChange)="onSearchChange($event)"
+    [(ngModel)]="searchString"
+    debounce="600"
+  ></ion-searchbar>
+  <div>
+    <ion-list>
+      <app-translator-profile-card
+        *ngFor="let profile of translators_profile_list"
+        [profile]="profile"
+        (selectedTranslator)="procesarSelectedTranslator($event)"
+      ></app-translator-profile-card>
+    </ion-list>
+  </div>
+  <div *ngIf="empty" class="ion-padding empty-state">
+    {{ 'CLIENTS.search.cantFindResultsFor' | translate }} "{{searchString}}". {{
+    'CLIENTS.search.tap' | translate }}
+    <span
+      style="cursor: pointer; color: var(--ion-color-primary)"
+      (click)="searchFilter()"
+      >{{ 'CLIENTS.search.here' | translate }}</span
+    >
+    {{ 'CLIENTS.search.toViewChangeCriteria' | translate }}
+  </div>
+
+  <mbsc-popup [options]="popupOptions" [buttons]="popupButtons" #popup>
+    <div class="mbsc-form-group">
+      <mbsc-datepicker
+        [controls]="['calendar']"
+        [options]="datePickerOptions"
+        select="range"
+        [touchUi]="true"
+        placeholder="Click to select"
+        label="Date range"
+        [startInput]="start"
+        [endInput]="end"
+        [min]="dateRange.start"
+        [max]="dateRange.end"
+      >
+        ></mbsc-datepicker
+      >
+      <mbsc-input
+        #start
+        label="{{ translate.instant('CLIENTS.search.start')}}"
+        placeholder="{{startTime| dfnsFormat: 'MM/dd/yyyy'}}"
+      >
+      </mbsc-input>
+
+      <mbsc-input
+        #end
+        label="{{ translate.instant('CLIENTS.search.end')}}"
+        placeholder="{{endTime| dfnsFormat: 'MM/dd/yyyy'}}"
+      >
+      </mbsc-input>
+
+      <mbsc-select
+        [data]="languages"
+        [options]="languagesFromOptions"
+        [(ngModel)]="languagesFromSelected"
+      >
+      </mbsc-select>
+
+      <mbsc-select
+        [data]="languages"
+        [options]="languagesToOptions"
+        [(ngModel)]="languagesToSelected"
+      >
+      </mbsc-select>
+
+      <mbsc-select
+        [data]="services"
+        [options]="servicesOptions"
+        [(ngModel)]="servicesSelected"
+      >
+      </mbsc-select>
+    </div>
+  </mbsc-popup>
+</ion-content>

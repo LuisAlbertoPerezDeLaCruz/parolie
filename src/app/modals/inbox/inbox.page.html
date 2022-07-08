@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'TRANSLATORS.inbox.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon name="close" slot="icon-only" (click)="close()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="ready">
+  <ion-segment (ionChange)="segmentChanged($event)" [(ngModel)]="segment">
+    <ion-segment-button value="messages" style="text-transform: none">
+      <ion-label>{{ 'TRANSLATORS.inbox.messages' | translate }}</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="notifications" style="text-transform: none">
+      <ion-label
+        >{{ 'TRANSLATORS.inbox.notifications' | translate }}
+        <button
+          style="background: transparent"
+          ion-button
+          icon-only
+          *ngIf="count>0"
+        >
+          <span class="fa-stack">
+            <!-- The icon that will wrap the number -->
+            <span
+              class="fas fa-circle fa-lg"
+              style="color: var(--brio-wine)"
+            ></span>
+            <!-- a strong element with the custom content, in this case a number -->
+            <strong class="fa-stack-1x" style="color: white; font-size: 10px">
+              {{ count }}
+            </strong>
+          </span>
+        </button>
+      </ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div *ngIf="segment=='messages'" class="ion-padding">
+    <ion-list>
+      <ion-item
+        *ngFor="let element of chatUsers"
+        (click)="startChat(element.user._id, element.user.name)"
+      >
+        <ion-avatar slot="start">
+          <img [src]="element?.photo" alt="" referrerpolicy="no-referrer" />
+          <span *ngIf="element.unreads>0" class="bullet">&bull;</span>
+        </ion-avatar>
+
+        <ion-label>{{element.user?.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div *ngIf="segment=='notifications'" class="ion-padding">
+    <ion-item>
+      <ion-label
+        >{{ 'TRANSLATORS.inbox.notificationType' | translate }}</ion-label
+      >
+      <ion-select value="unread" (ionChange)="onChangeSelect($event)">
+        <ion-select-option value="unread"
+          >{{ 'TRANSLATORS.inbox.unread' | translate }}</ion-select-option
+        >
+        <ion-select-option value="read"
+          >{{ 'TRANSLATORS.inbox.read' | translate }}</ion-select-option
+        >
+        <ion-select-option value="all"
+          >{{ 'TRANSLATORS.inbox.all' | translate }}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-list *ngFor="let noti of notis, let idx=index">
+      <app-noti-detail
+        (notiDeletedEvent)="updateCount($event)"
+        [noti]="noti"
+      ></app-noti-detail>
+    </ion-list>
+  </div>
+</ion-content>

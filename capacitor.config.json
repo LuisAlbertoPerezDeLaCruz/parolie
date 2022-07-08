@@ -1,0 +1,16 @@
+{
+  "appId": "com.parolie.app",
+  "appName": "parolie",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    },
+    "GoogleAuth": {
+      "scopes": ["profile", "email"],
+      "serverClientId": "77163792157-vvs9thhd388n1c383ij2581b777n06bm.apps.googleusercontent.com",
+      "forceCodeForRefreshToken": true
+    }
+  }
+}
