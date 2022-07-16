@@ -1,9 +1,10 @@
 {
-  "name": "app",
-  "short_name": "app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "parolie",
+  "short_name": "parolie",
+  "theme_color": "#4e8ef7",
+  "background_color": "#4e8ef7",
   "display": "standalone",
+  "orientation": "portrait",
   "scope": "./",
   "start_url": "./",
   "icons": [

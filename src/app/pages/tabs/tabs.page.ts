@@ -1,25 +1,25 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   AlertController,
   LoadingController,
   ModalController,
   ToastController,
-} from "@ionic/angular";
-import { ChangesService } from "../../services/changes.service";
-import { ChatsService } from "../../services/chats.service";
-import { AuthService } from "../../services/auth.service";
-import { NotificationsService } from "../../services/notifications.service";
-import { Subscription } from "rxjs";
-import { InboxPage } from "../../modals/inbox/inbox.page";
-import { ApiService } from "../../services/api.service";
-import { ConfigService } from "../../services/config.service";
-import { PaymentsService } from "../../services/payments.service";
+} from '@ionic/angular';
+import { ChangesService } from '../../services/changes.service';
+import { ChatsService } from '../../services/chats.service';
+import { AuthService } from '../../services/auth.service';
+import { NotificationsService } from '../../services/notifications.service';
+import { Subscription } from 'rxjs';
+import { InboxPage } from '../../modals/inbox/inbox.page';
+import { ApiService } from '../../services/api.service';
+import { PaymentsService } from '../../services/payments.service';
+import { SwUpdate } from '@angular/service-worker';
 
 @Component({
-  selector: "app-tabs",
-  templateUrl: "./tabs.page.html",
-  styleUrls: ["./tabs.page.scss"],
+  selector: 'app-tabs',
+  templateUrl: './tabs.page.html',
+  styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit, OnDestroy {
   user = null;
@@ -40,8 +40,12 @@ export class TabsPage implements OnInit, OnDestroy {
     private modalController: ModalController,
     private apiService: ApiService,
     private paymentsService: PaymentsService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private swUpdate: SwUpdate
   ) {
+    setInterval(() => {
+      this.checkUpdate();
+    }, 10000);
     const newNoteSub = this.notificationsService.new_notis_subject.subscribe(
       (res) => {
         this.has_new_notis = res;
@@ -80,8 +84,8 @@ export class TabsPage implements OnInit, OnDestroy {
   async ngOnInit() {
     this.user = await this.authService.getCurrentUserData();
     if (!this.user) {
-      this.router.navigateByUrl("/login");
-    } else if (this.router.url == "/") {
+      this.router.navigateByUrl('/login');
+    } else if (this.router.url == '/') {
       this.setUpServices();
       this.navigateByRole(this.user.role);
     } else {
@@ -105,7 +109,7 @@ export class TabsPage implements OnInit, OnDestroy {
   }
 
   async manageChatsChange(info) {
-    if (info.collection == "chats" && info.action == "create") {
+    if (info.collection == 'chats' && info.action == 'create') {
       if (info.object.to._id == this.user.api_user_id) {
         this.chatsService.new_chats_subject.next(true);
       }
@@ -114,13 +118,13 @@ export class TabsPage implements OnInit, OnDestroy {
 
   async manageNotesChange(info) {
     console.log({ info });
-    if (info.collection == "notes" && info.action == "create") {
+    if (info.collection == 'notes' && info.action == 'create') {
       if (info.object.to == this.user.api_user_id) {
         this.notificationsService.new_notis_subject.next(true);
-        if (info.object.message == "Your reservation was APPROVED") {
+        if (info.object.message == 'Your reservation was APPROVED') {
           await this.checkUnpaidReservations();
         }
-        if (info.object.message == "Your reservation was DELIVERED") {
+        if (info.object.message == 'Your reservation was DELIVERED') {
           await this.completePayment(info.object.metadata._id);
         }
       }
@@ -137,7 +141,7 @@ export class TabsPage implements OnInit, OnDestroy {
       reservation_id,
       233
     );
-    console.log(">>>", { result });
+    console.log('>>>', { result });
   }
 
   async checkUnpaidReservations() {
@@ -145,7 +149,7 @@ export class TabsPage implements OnInit, OnDestroy {
     const approvedReservations = await this.apiService
       .getReservationsByQuery(this.user.auth_api_token, {
         creator: this.user.api_user_id,
-        status: "APPROVED",
+        status: 'APPROVED',
       })
       .toPromise();
     approvedReservations.forEach((element) => {
@@ -156,17 +160,17 @@ export class TabsPage implements OnInit, OnDestroy {
     if (unpaidReservations.length > 0) {
       console.log(unpaidReservations);
       let inputAlert = await this.alertCtrl.create({
-        header: "Payment needed",
+        header: 'Payment needed',
         message: `You have ${unpaidReservations.length} reservation(s) with pending payments. Please go to "My Agenda" to apply payments.`,
         buttons: [
           {
-            text: "Later",
-            role: "cancel",
+            text: 'Later',
+            role: 'cancel',
           },
           {
-            text: "Pay now",
+            text: 'Pay now',
             handler: () => {
-              this.router.navigateByUrl("/client-library");
+              this.router.navigateByUrl('/client-library');
             },
           },
         ],
@@ -180,22 +184,26 @@ export class TabsPage implements OnInit, OnDestroy {
   }
 
   navigateByRole(role) {
-    if (role == "CLIENT") {
-      this.router.navigateByUrl("/client-home");
-    } else if (role == "TRANSLATOR") {
-      this.router.navigateByUrl("/translator-home");
-    } else if (role == "ADMINISTRATOR") {
-      this.router.navigateByUrl("/administrator-home");
+    if (role == 'CLIENT') {
+      this.router.navigateByUrl('/client-home');
+    } else if (role == 'TRANSLATOR') {
+      this.router.navigateByUrl('/translator-home');
+    } else if (role == 'ADMINISTRATOR') {
+      this.router.navigateByUrl('/administrator-home');
     }
   }
 
   async openInbox() {
     const modal = await this.modalController.create({
       component: InboxPage,
-      cssClass: "full-screen-modal",
+      cssClass: 'full-screen-modal',
       componentProps: {},
     });
     modal.onDidDismiss().then((data: any) => {});
     modal.present();
+  }
+
+  checkUpdate() {
+    this.swUpdate.checkForUpdate();
   }
 }
