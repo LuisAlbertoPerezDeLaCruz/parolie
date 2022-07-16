@@ -37,9 +37,27 @@ export class AppComponent implements OnInit {
       toast.present();
     }
 
+    window.addEventListener('offline', async () => {
+      this.toastController.dismiss();
+      const toast = await this.toastController.create({
+        header: 'Offline',
+        message: 'You are offline, check your internet connection',
+        position: 'bottom',
+        buttons: [
+          {
+            text: 'Ok',
+            role: 'cancel',
+            handler: () => {},
+          },
+        ],
+      });
+      toast.present();
+    });
+
     window.addEventListener('online', async () => {
       this.toastController.dismiss();
     });
+
     if (this.swUpdate.isEnabled) {
       this.swUpdate.available.subscribe(async (event) => {
         console.log('Current version is', event.current);
