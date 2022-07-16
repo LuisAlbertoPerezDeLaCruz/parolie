@@ -30,6 +30,7 @@ import {
   AngularFireFunctionsModule,
   REGION,
 } from "@angular/fire/compat/functions";
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 const config: SocketIoConfig = {
   url: GlobalConstants.apiURL,
@@ -67,6 +68,12 @@ export function createTranslateLoader(http: HttpClient) {
     SocketIoModule.forRoot(config),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireFunctionsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
