@@ -4,28 +4,28 @@ import {
   ViewChild,
   ElementRef,
   OnDestroy,
-} from "@angular/core";
-import { AuthService } from "../../../services/auth.service";
-import { LanguagePopoverPage } from "../../language-popover/language-popover.page";
+} from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { LanguagePopoverPage } from '../../language-popover/language-popover.page';
 import {
   PopoverController,
   AlertController,
   LoadingController,
-} from "@ionic/angular";
-import { TranslateService } from "@ngx-translate/core";
-import { MapsService } from "../../../services/maps.service";
-import { Subscription } from "rxjs";
-import { ApiService } from "../../../services/api.service";
-import { ConfigService } from "../../../services/config.service";
-import { Storage } from "@ionic/storage-angular";
+} from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+// import { MapsService } from "../../../services/maps.service";
+import { Subscription } from 'rxjs';
+import { ApiService } from '../../../services/api.service';
+import { ConfigService } from '../../../services/config.service';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
-  selector: "app-home",
-  templateUrl: "./home.page.html",
-  styleUrls: ["./home.page.scss"],
+  selector: 'app-home',
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit, OnDestroy {
-  @ViewChild("map", { static: false }) mapElement: ElementRef;
+  @ViewChild('map', { static: false }) mapElement: ElementRef;
 
   translator = null;
   translator_statuses = null;
@@ -43,7 +43,7 @@ export class HomePage implements OnInit, OnDestroy {
     private alertCtrl: AlertController,
     private popoverCtrl: PopoverController,
     private translate: TranslateService,
-    private mapsService: MapsService,
+    // private mapsService: MapsService,
     private apiService: ApiService,
     private loadingCtrl: LoadingController,
     private configService: ConfigService,
@@ -56,7 +56,7 @@ export class HomePage implements OnInit, OnDestroy {
     });
     this.subscriptions.add(statSub);
     let loading = await this.loadingCtrl.create({
-      message: this.translate.instant("CONTROLS.loading"),
+      message: this.translate.instant('CONTROLS.loading'),
     });
     await loading.present();
     const user = await this.auth.getCurrentUserData();
@@ -73,15 +73,15 @@ export class HomePage implements OnInit, OnDestroy {
     this.configService.setUserFB(user);
     this.configService.loaded = true;
     this.configService.fromLanding = true;
-    await this.storage.set("PAROLIE.USER_API", user_api);
-    await this.storage.set("PAROLIE.USER_FB", user);
+    await this.storage.set('PAROLIE.USER_API', user_api);
+    await this.storage.set('PAROLIE.USER_FB', user);
 
     this.pending_reservations = await this.getPendingReservations();
     loading.dismiss();
     this.show_wellcome = !this.translator.statuses.created_availability;
     this.setUpPage();
     this.ready = true;
-    this.mapsService.loadUserPosition();
+    // this.mapsService.loadUserPosition();
   }
 
   ngOnDestroy() {
@@ -92,14 +92,14 @@ export class HomePage implements OnInit, OnDestroy {
 
   async signOut() {
     let inputAlert = await this.alertCtrl.create({
-      header: "Log out ?",
+      header: 'Log out ?',
       buttons: [
         {
-          text: this.translate.instant("BUTTONS.cancel"),
-          role: "cancel",
+          text: this.translate.instant('BUTTONS.cancel'),
+          role: 'cancel',
         },
         {
-          text: this.translate.instant("BUTTONS.ok"),
+          text: this.translate.instant('BUTTONS.ok'),
           handler: () => {
             this.subscriptions.unsubscribe();
             this.auth.logout();
@@ -123,26 +123,26 @@ export class HomePage implements OnInit, OnDestroy {
       query: e.detail.value,
     };
 
-    let service = new google.maps.places.PlacesService(this.mapsService.map);
+    // let service = new google.maps.places.PlacesService(this.mapsService.map);
 
-    service.textSearch(
-      request,
-      (
-        results: google.maps.places.PlaceResult[] | null,
-        status: google.maps.places.PlacesServiceStatus
-      ) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-          this.mapsService.map.setCenter(results[0].geometry.location);
-        }
-      }
-    );
+    // service.textSearch(
+    //   request,
+    //   (
+    //     results: google.maps.places.PlaceResult[] | null,
+    //     status: google.maps.places.PlacesServiceStatus
+    //   ) => {
+    //     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+    //       this.mapsService.map.setCenter(results[0].geometry.location);
+    //     }
+    //   }
+    // );
   }
 
   getPendingReservations(): Promise<any> {
     return new Promise(async (resolve) => {
       const result: any = await this.apiService
         .getReservationsByQuery(this.translator.auth_api_token, {
-          status: "BLOCKED",
+          status: 'BLOCKED',
         })
         .toPromise();
       resolve(result);
